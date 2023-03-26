@@ -6,12 +6,13 @@ class CustomCard extends StatelessWidget {
   double mHeigth;
   double rotate;
   Widget mChildren;
+  Color? mShadowColor;
   CustomCard(
       {super.key,
       required this.mWith,
       required this.mHeigth,
       required this.rotate,
-      required this.mChildren});
+      required this.mChildren,this.mShadowColor});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class CustomCard extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(20)),
             boxShadow: [
               BoxShadow(
-                color: Theme.of(context).shadowColor,
+                color: mShadowColor == null ? Theme.of(context).shadowColor : mShadowColor as Color,
                 spreadRadius: 0.5,
                 blurRadius: 6,
                 offset: const Offset(0, 0), // changes position of shadow

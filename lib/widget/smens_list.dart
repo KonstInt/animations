@@ -2,7 +2,8 @@ import 'package:animations/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'dart:io' show Platform;
 import '../models/smena.dart';
 import 'custom_card.dart';
 
@@ -34,8 +35,8 @@ class _SmensState extends State<Smens> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 210,
-      margin: EdgeInsets.only(top: 30),
+      height: Platform.isAndroid?210.h:190.h,
+      margin: EdgeInsets.only(top: 30).r,
       child: Expanded(
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -51,13 +52,13 @@ class _SmensState extends State<Smens> {
 
 Widget buildRow(Smena smen, BuildContext context) {
   return Container(
-    padding: EdgeInsets.all(15),
+    padding: EdgeInsets.all(15).r,
     child: CustomCard(
-        mWith: 354,
-        mHeigth: 168.13,
+        mWith: 354.w,
+        mHeigth: 168.13.h,
         rotate: 2.76,
         mChildren: Container(
-          margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+          margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20).r,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -65,17 +66,17 @@ Widget buildRow(Smena smen, BuildContext context) {
                   ? Text("Сейчас идёт",
                       style: Theme.of(context).textTheme.headline1?.copyWith(
                           color: kTextSpec1Color,
-                          fontSize: 15,
+                          fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
-                          letterSpacing: -0.33))
+                          letterSpacing: -0.33.sp))
                   : Text("Уже скоро",
                       style: Theme.of(context).textTheme.headline1?.copyWith(
                           color: kSecondaryTextColor,
-                          fontSize: 15,
+                          fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
-                          letterSpacing: -0.33)),
+                          letterSpacing: -0.33.sp)),
               Container(
-                margin: EdgeInsets.only(top: 5),
+                margin: EdgeInsets.only(top: 5).r,
                 child: Text(smen.name,
                     style: Theme.of(context).textTheme.headline1?.copyWith(
                         fontSize: 28,
@@ -83,7 +84,7 @@ Widget buildRow(Smena smen, BuildContext context) {
                         letterSpacing: -0.33)),
               ),
               Container(
-                  margin: EdgeInsets.only(top: 10),
+                  margin: EdgeInsets.only(top: 10).r,
                   child: Row(
                     children: [
                       Text("Корпус №${smen.corp}",
@@ -91,22 +92,22 @@ Widget buildRow(Smena smen, BuildContext context) {
                               .textTheme
                               .headline1
                               ?.copyWith(
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.w600,
-                                  letterSpacing: -0.33)),
-                      const SizedBox(width: 20),
+                                  letterSpacing: -0.33.sp)),
+                      SizedBox(width: 20.w),
                       Text("Отряд №${smen.otr}",
                           style: Theme.of(context)
                               .textTheme
                               .headline1
                               ?.copyWith(
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.w600,
-                                  letterSpacing: -0.33)),
+                                  letterSpacing: -0.33.sp)),
                     ],
                   )),
                 Container(
-                  margin: EdgeInsets.only(top: 15),
+                  margin: EdgeInsets.only(top: 15).r,
                   width: double.infinity,
                   child: TextButton(
                   onPressed: () => {},
@@ -118,11 +119,11 @@ Widget buildRow(Smena smen, BuildContext context) {
                         borderRadius: BorderRadius.circular(15.0),
                       ))),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 5),
+                    padding: EdgeInsets.symmetric(horizontal: 35, vertical: 5).r,
                     child: Text("Чат отряда(${smen.newMessages} сообщ.)", style: Theme.of(context).textTheme.headline2?.copyWith(
-                        letterSpacing: -0.33,
+                        letterSpacing: -0.33.sp,
                         fontWeight: FontWeight.w600,
-                        fontSize: 15),),
+                        fontSize: 15.sp),),
                   ),
               ),
                 )
